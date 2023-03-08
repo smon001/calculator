@@ -4,11 +4,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
     root: {
-      background: '#16181d',
-      padding: '10px',
-    borderRadius: '10px',
-    maxWidth: '500px', // Limit the width
-    margin: 'auto',
+        background: '#16181d',
+        padding: '10px',
+        borderRadius: '10px',
+        maxWidth: '500px',
+        margin: 'auto',
     },
     textField: {
         background: '#16181d',
@@ -19,34 +19,34 @@ const useStyles = makeStyles({
         justifyContent: 'flex-end',
         textAlign: 'right',
         '& .MuiInputBase-input': {
-          textAlign: 'right',
-          color: '#f5f5f5'
+            textAlign: 'right',
+            color: '#f5f5f5'
         },
         '&:focus': {
-          outline: 'none',
+            outline: 'none',
         },
-      },
+    },
     button: {
-      background: '#f5f5f5',
-      borderRadius: '50%',
-      fontSize: '30px',
-      fontWeight: 'bold',
-      color: '#666',
-      '&:hover': {
-        background: '#ebebeb',
-      },     
+        background: '#f5f5f5',
+        borderRadius: '50%',
+        fontSize: '30px',
+        fontWeight: 'bold',
+        color: '#666',
+        '&:hover': {
+            background: '#ebebeb',
+        },
     },
     operatorButton: {
-      background: '#f5923e',
-      borderRadius: '50%',
-      fontSize: '30px',
-      fontWeight: 'bold',
-      color: '#fff',
-      '&:hover': {
-        background: '#da7a2d',
-      },
+        background: '#f5923e',
+        borderRadius: '50%',
+        fontSize: '30px',
+        fontWeight: 'bold',
+        color: '#fff',
+        '&:hover': {
+            background: '#da7a2d',
+        },
     },
-  });
+});
 
 const Calculator: FunctionComponent = () => {
     const [value, setValue] = useState<string>("");
@@ -58,29 +58,29 @@ const Calculator: FunctionComponent = () => {
                 setValue('-'?.concat(value))
                 break;
             case '%':
-                const temp =+ value / 100
+                const temp = + value / 100
                 setValue(temp.toString())
                 break;
             default:
-                 setValue(value + buttonValue)
+                setValue(value + buttonValue)
                 break;
-        } 
-      
+        }
+
     };
 
     const handleClearButtonClick = (): void => {
         setValue("");
     };
 
-        const handleEqualsButtonClick = () => {
-            try {
+    const handleEqualsButtonClick = () => {
+        try {
             // eslint-disable-next-line no-new-func
             const result = new Function(`return ${value}`)();
             setValue(result.toString());
-            } catch (error) {
+        } catch (error) {
             setValue("Error");
-            }
-        };
+        }
+    };
 
 
     return (
@@ -95,7 +95,7 @@ const Calculator: FunctionComponent = () => {
                 />
             </Grid>
             <Grid item container direction="row" spacing={2} >
-            <Grid item xs={3}>
+                <Grid item xs={3}>
                     <Button
                         variant="contained"
                         fullWidth
@@ -132,7 +132,7 @@ const Calculator: FunctionComponent = () => {
                         onClick={() => handleButtonClick("/")}
                         className={classes.operatorButton}
                     >
-                         ÷
+                        ÷
                     </Button>
                 </Grid>
 
@@ -173,7 +173,7 @@ const Calculator: FunctionComponent = () => {
                         onClick={() => handleButtonClick("*")}
                         className={classes.operatorButton}
                     >
-                         *
+                        *
                     </Button>
                 </Grid>
                 <Grid item xs={3}>
@@ -257,7 +257,7 @@ const Calculator: FunctionComponent = () => {
                     </Button>
                 </Grid>
                 <Grid item xs={4}>
-                <Button
+                    <Button
                         variant="contained"
                         fullWidth
                         onClick={() => handleButtonClick("0")}
@@ -265,8 +265,8 @@ const Calculator: FunctionComponent = () => {
                     >
                         0
                     </Button>
-          
-                  
+
+
                 </Grid>
                 <Grid item xs={4}>
                     <Button
@@ -278,9 +278,9 @@ const Calculator: FunctionComponent = () => {
                         .
                     </Button>
                 </Grid>
-    
+
                 <Grid item xs={4}>
-                <Button
+                    <Button
                         variant="contained"
                         fullWidth
                         onClick={handleEqualsButtonClick}
