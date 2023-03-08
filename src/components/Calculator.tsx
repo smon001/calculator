@@ -53,7 +53,18 @@ const Calculator: FunctionComponent = () => {
     const classes = useStyles();
 
     const handleButtonClick = (buttonValue: string): void => {
-        buttonValue === '+/-' ?   setValue('-'?.concat(value)) :   setValue(value + buttonValue)
+        switch (buttonValue) {
+            case '+/-':
+                setValue('-'?.concat(value))
+                break;
+            case '%':
+                const temp =+ value / 100
+                setValue(temp.toString())
+                break;
+            default:
+                 setValue(value + buttonValue)
+                break;
+        } 
       
     };
 
